@@ -23,7 +23,7 @@ head(importance_metabolites)
 importance_metabolites <- importance_metabolites[order(importance_metabolites$MeanDecreaseAccuracy, decreasing = TRUE), ]
 head(importance_metabolites)
 write.table(importance_metabolites, 'importance_metabolites.txt', sep = '\t', col.names = NA, quote = FALSE)
-varImpPlot(metabolites_train.forest, n.var = min(30, nrow(metabolites_train.forest$importance)), main = 'Top 30 - variable importance')
+varImpPlot(metabolites_train.forest, n.var = min(20, nrow(metabolites_train.forest$importance)), main = 'Top 20 - variable importance')
 set.seed(123)
 metabolites_train.cv <- replicate(5, rfcv(metabolites_train[-ncol(metabolites_train)], metabolites_train$group, cv.fold = 10,step = 1.5), simplify = FALSE)
 metabolites_train.cv
